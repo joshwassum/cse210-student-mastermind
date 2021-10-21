@@ -26,7 +26,7 @@ class Roster:
         else:
             return f"{player.title()} is already a player. "
 
-    def get.current(self):
+    def get_current(self):
         """
             This will return the current player when called.
         """
