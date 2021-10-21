@@ -36,4 +36,8 @@ root                    (project root folder)
 vanessa
 ---
 * # TODO: Add your names and emails here
+<<<<<<< HEAD
 Buz20001@byui.edu
+=======
+Brian Bawden brianbawden001@gmail.com
+>>>>>>> a0021cbd10ad5a62e176e9927e33e94f59dcaecd
