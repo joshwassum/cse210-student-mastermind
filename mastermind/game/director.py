@@ -1,4 +1,8 @@
 from game.roster import Roster
+from game.guess import Guess
+from game.console import Console
+from game.player import Player
+from game.board import Board
 
 class Director:
     """A code template for a person who directs the game. The responsibility of 
@@ -42,7 +46,7 @@ class Director:
 
     def _prepare_game(self):
         """Prepares the game before it begins. In this case, that means getting the player names and adding them to the roster.
-        
+
         Args:
             self (Director): An instance of Director.
         """
@@ -59,6 +63,21 @@ class Director:
             self (Director): An instance of Director.
         """
 
+        board = self._board.to_string()
+        self._console.write(board)
+        player = self._roster.get_current()
+        self._console.write(f"{player.get_name()}'s turn:")
+        guessing = True
+        while guessing:
+            player_guess = self._console.read_number("What is your guess? ")
+
+            if len(player_guess) == 4:
+                guess = Guess(player_guess, player)
+                player.set_guess(guess)
+                guessing = False
+            else:
+                self._console.write("Incorrect guess format, please enter a four digit number.")
+
     def _do_updates(self):
         """Updates the important game information for each round of play. In
         this case, that means updating the board with the current guess.
@@ -66,6 +85,9 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
+        player = self._roster.get_current()
+        guess = player.get_guess()
+        self._board.hint(guess)
 
     def _do_outputs(self):
         """Outputs the important game information for each round of play. In 
@@ -74,3 +96,9 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
+        if self._board.check_guess():
+            winner = self._roster.get_current()
+            name = winner.get_name()
+            self._console.write(f"\n {name} won!")
+            self._keep_playing = False
+        self._roster.next_player()
