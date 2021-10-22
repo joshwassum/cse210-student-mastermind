@@ -1,5 +1,5 @@
-class Move:
-    """A maneuver in the game. The responsibility of guess is to keep track of the stones to remove and which pile to remove them from.
+class guess:
+    """A maneuver in the game. The responsibility of guess  is to keep track of the stones to remove and which pile to remove them from.
     
     Stereotype: 
         Information Holder
