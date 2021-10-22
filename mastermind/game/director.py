@@ -1,4 +1,4 @@
-from game.roster import Roster
+from game.Roster import Roster
 from game.guess import Guess
 from game.console import Console
 from game.player import Player
