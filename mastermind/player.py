@@ -17,7 +17,7 @@ class Player:
         """
         return self._name
 
-    def set_guess(self, move):
+    def set_guess(self, guess):
         """Sets the players guess, different than get_guess
         """
         self._guess = guess
