@@ -1,4 +1,4 @@
-class guess:
+class Guess:
     """A maneuver in the game. The responsibility of guess  is to keep track of the stones to remove and which pile to remove them from.
     
     Stereotype: 
@@ -8,27 +8,27 @@ class guess:
         _number (integer): The number to remove from.
         _guess (integer): The number of position to remove.
     """
-    def __init__(self, guess, number):
+    def __init__(self, guess, player):
         """The class constructor.
         
         Args:
             self (Board): an instance of Board.
         """
-        self._number = number
         self._guess = guess
+        self._player = player
 
-    def get_number(self):
+    def get_guess(self):
         """Returns the pile to remove from.
 
         Args:
             self (Guess): an instance of Guess.
         """
-        return self._number
+        return self._guess
 
-    def get_position(self):
+    def get_player(self):
         """Returns the number of stones to remove.
 
         Args:
             self (Guess): an instance of Guess.
         """
-        return self._position
+        return self._player

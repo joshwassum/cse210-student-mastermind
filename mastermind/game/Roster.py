@@ -40,3 +40,4 @@ class Roster:
         """
 
         self.current = (self.current + 1) % len(self.players)
+    
