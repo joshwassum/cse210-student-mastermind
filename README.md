@@ -37,3 +37,5 @@ root                    (project root folder)
 Brian Bawden brianbawden001@gmail.com
 
 Josh Wassum was21005@byui.edu
+
+Shane Wocicki woc13001@byui.edu
