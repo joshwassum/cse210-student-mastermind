@@ -8,7 +8,7 @@ class Player:
         self._guess = None
         
     def get_guess(self):
-        """Stores the players last move, if no move has occured nothing will happen
+        """Stores the players last guess, if no move has occured nothing will happen
         """
         return self._guess
 
@@ -18,6 +18,6 @@ class Player:
         return self._name
 
     def set_guess(self, move):
-        """Sets the players move, different than get_move
+        """Sets the players guess, different than get_guess
         """
         self._guess = guess
