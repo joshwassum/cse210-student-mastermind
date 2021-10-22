@@ -33,11 +33,14 @@ root                    (project root folder)
 * Python 3.8.0
 
 ## Authors
-vanessa
+
 ---
-* # TODO: Add your names and emails here
-<<<<<<< HEAD
-Buz20001@byui.edu
-=======
+
+vanessa Buz20001@byui.edu
+
 Brian Bawden brianbawden001@gmail.com
->>>>>>> a0021cbd10ad5a62e176e9927e33e94f59dcaecd
+
+Josh Wassum was21005@byui.edu
+
+Shane Wocicki woc13001@byui.edu
+
