@@ -33,9 +33,14 @@ root                    (project root folder)
 * Python 3.8.0
 
 ## Authors
+
 ---
+
+vanessa Buz20001@byui.edu
+
 Brian Bawden brianbawden001@gmail.com
 
 Josh Wassum was21005@byui.edu
 
 Shane Wocicki woc13001@byui.edu
+
