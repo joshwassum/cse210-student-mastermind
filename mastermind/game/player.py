@@ -5,6 +5,7 @@ class Player:
         """The glue to the class
         """
         self._name = name
+        self._code = None
         self._guess = None
         
     def get_guess(self):
@@ -21,3 +22,7 @@ class Player:
         """Sets the players guess, different than get_guess
         """
         self._guess = guess
+    
+    def set_code(self, code):
+
+        self._code = code

@@ -8,14 +8,13 @@ class Guess:
         _number (integer): The number to remove from.
         _guess (integer): The number of position to remove.
     """
-    def __init__(self, guess, player):
+    def __init__(self, guess):
         """The class constructor.
         
         Args:
             self (Board): an instance of Board.
         """
         self._guess = guess
-        self._player = player
 
     def get_guess(self):
         """Returns the pile to remove from.
