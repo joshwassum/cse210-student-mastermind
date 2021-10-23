@@ -1,3 +1,5 @@
+import random
+
 class Player:
     """A person taking part in a game. 
     """
@@ -5,8 +7,8 @@ class Player:
         """The glue to the class
         """
         self._name = name
-        self._code = None
         self._guess = None
+        self._code = str(random.randint(1000, 9999))
         
     def get_guess(self):
         """Stores the players last guess, if no move has occurred nothing will happen
@@ -23,6 +25,6 @@ class Player:
         """
         self._guess = guess
     
-    def set_code(self, code):
+    def get_code(self):
 
-        self._code = code
+       return self._code
