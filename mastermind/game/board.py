@@ -58,9 +58,26 @@ class Board():
         Returns:
         string: A hint in the form [xxxx]
         """
-        for i in current_player.get_code():
-            if current_player.get_code() == current_player.get_guess():
-                self._hint[player_number] = "xxxx"
+        temp_guess = list(str(self._guess[player_number]))
+        temp_code = list(str(current_player.get_code()))
+        temp_hint = list(str(self._hint[player_number]))
+        player_guess = list(str(current_player.get_guess().get_guess()))
+
+        print(temp_code)
+        print(temp_hint)
+        print(temp_guess)
+        print(player_guess)
+
+        # code = current_player.get_code()
+        # for i in self._hint[player_number]:
+        #     temp_hint.append[i]
+        # for i in self._guess[player_number]:
+        #     temp_code.append[i]
+        # for i in code:
+        #     temp_code.append[i]
+        # for i in range(len(code)):
+        #     if temp_code[i] == temp_guess[i]:
+                
 
         
 
@@ -74,7 +91,7 @@ class Board():
         if "o" in self._hint[player] or "*" in self._hint[player]:
             return False
         else:
-            return True  
+            return True
 
 
     def _prepare(self):
