@@ -15,8 +15,8 @@ class Board():
         Args:
             self (Board): an instance of Board.
         """
-
-        self._number = []
+        self._hint = []
+        self._guess =[]
         self._prepare()
         
 
@@ -28,60 +28,53 @@ class Board():
         Returns:
             string: A representation of the current board.
         """ 
-        
-          
+
         board = ""
 
         border = "\n---------------------"
-        guess = self._number[1]
-        hint = self._number[2]
 
         board += border
 
         for i in range(len(players.players)):
+            self._hint.append("****")
+            self._guess.append("----")
             name = players.players[i].get_name()
             i+=1
 
-            board +=(f"\nPlayer name: {name} " + guess + ", " + hint) 
+            board +=(f"\nPlayer name: {name} " + self._guess[players.current] + ", " + self._hint[players.current]) 
          
         board += border
         return board
 
 
-    def hint(self, number, guess):
+    def hint(self, current_player, player_number):
         """Generates a hint based on the given code and guess.
 
         Args:
         self (Board): An instance of Board.
-        code (string): The code to compare with.
-        guess (string): The guess that was made.
+        current_player (Player): and instance of Player.
+        player_number (int): player postition.
 
         Returns:
         string: A hint in the form [xxxx]
-        """ 
-        hint = ""
-        for index, letter in enumerate(guess):
-            if number[index] == letter:
-                hint += "x"
-            elif letter in number:
-                hint += "o"
-        else:
-            hint += "*"
-        return hint
+        """
+        for i in current_player.get_code():
+            if current_player.get_code() == current_player.get_guess():
+                self._hint[player_number] = "xxxx"
+
         
 
-    def check_guess(self, guess):
+    def check_guess(self, player):
         '''Checks the users letter guess a letter with a true or false then return
         
         
         Args:
             self (Board): an instance of Board.
         '''
-
-        if guess == self._number[0]:
-            return True
+        if "o" in self._hint[player] or "*" in self._hint[player]:
+            return False
         else:
-            return False  
+            return True  
 
 
     def _prepare(self):
@@ -90,10 +83,4 @@ class Board():
         Args:
             self (Board): an instance of Board.
         """
-        self._number = str(random.randint(1000, 10000))
-        guess = "----"
-        hint = "****"
-        self._number = [self._number, guess, hint]
-        print(self._number)
-        
-        
+        pass
