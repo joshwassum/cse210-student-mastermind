@@ -1,4 +1,4 @@
-from game.Roster import Roster
+from game.roster import Roster
 from game.guess import Guess
 from game.console import Console
 from game.player import Player
@@ -29,7 +29,6 @@ class Director:
         self._board = Board()
         self._console = Console()
         self._keep_playing = True
-        self._guess = Guess()
         self._roster = Roster()
 
     def start_game(self):
@@ -63,7 +62,7 @@ class Director:
             self (Director): An instance of Director.
         """
 
-        board = self._board.to_string()
+        board = self._board.to_string(self._roster)
         self._console.write(board)
         player = self._roster.get_current()
         self._console.write(f"{player.get_name()}'s turn:")
@@ -71,8 +70,8 @@ class Director:
         while guessing:
             player_guess = self._console.read_number("What is your guess? ")
 
-            if len(player_guess) == 4:
-                guess = Guess(player_guess, player)
+            if len(str(abs(player_guess))) == 4:
+                guess = Guess(player_guess)
                 player.set_guess(guess)
                 guessing = False
             else:
@@ -87,7 +86,7 @@ class Director:
         """
         player = self._roster.get_current()
         guess = player.get_guess()
-        self._board.hint(guess)
+        self._board.hint(guess, player._)
 
     def _do_outputs(self):
         """Outputs the important game information for each round of play. In 

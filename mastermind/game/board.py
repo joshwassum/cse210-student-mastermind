@@ -21,7 +21,7 @@ class Board():
         
 
 
-    def to_string(self, player):
+    def to_string(self, players):
         """Converts the board data to its string representation.
         Args:
            self (Board): an instance of Board.
@@ -38,17 +38,17 @@ class Board():
 
         board += border
 
-        for (i, player) in range(len(self.players)):
-            name = player
+        for i in range(len(players.players)):
+            name = players.players[i].get_name()
             i+=1
 
-            board +=(f"\nPlayer name: {name} " + guess + "," + hint) 
+            board +=(f"\nPlayer name: {name} " + guess + ", " + hint) 
          
         board += border
         return board
 
 
-    def _hint(self, number, guess):
+    def hint(self, number, guess):
         """Generates a hint based on the given code and guess.
 
         Args:
