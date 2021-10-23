@@ -6,7 +6,8 @@ class Board():
     Stereotype: 
         Information Holder
     Attributes:
-        _piles (list): The number of piles of stones.
+        _hint (list): The current player hint.
+        _guess (list): the current player guess.
     """
 
     def __init__(self):
@@ -25,10 +26,10 @@ class Board():
         """Converts the board data to its string representation.
         Args:
            self (Board): an instance of Board.
+           player (Roster): and instance of Roster.
         Returns:
             string: A representation of the current board.
-        """ 
-
+        """
         board = ""
 
         border = "\n---------------------"
@@ -38,8 +39,7 @@ class Board():
         for i in range(len(players.players)):
             name = players.players[i].get_name()
 
-            board +=(f"\nPlayer name: {name} " + self._guess[i] + ", " + self._hint[i]) 
-         
+            board +=(f"\nPlayer name: {name} " + self._guess[i] + ", " + self._hint[i])
         board += border
         return board
 
@@ -49,8 +49,8 @@ class Board():
 
         Args:
         self (Board): An instance of Board.
-        current_player (Player): and instance of Player.
-        player_number (int): player postition.
+        current_player (Player): an instance of Player.
+        player_number (int): The players index position in the Roster.
 
         Returns:
         string: A hint in the form [xxxx]
@@ -72,10 +72,10 @@ class Board():
 
     def check_guess(self, player):
         '''Checks the users letter guess a letter with a true or false then return
-        
-        
+
         Args:
             self (Board): an instance of Board.
+            player (Player): an instance of Player.
         '''
         if "o" in self._hint[player] or "*" in self._hint[player]:
             return False
@@ -85,7 +85,7 @@ class Board():
 
     def _prepare(self):
         """Sets up the board with an entry for each player.
-        
+
         Args:
             self (Board): an instance of Board.
         """

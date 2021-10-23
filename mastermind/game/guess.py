@@ -5,8 +5,7 @@ class Guess:
         Information Holder
 
     Attributes:
-        _number (integer): The number to remove from.
-        _guess (integer): The number of position to remove.
+        _guess (integer): The current players guess.
     """
     def __init__(self, guess):
         """The class constructor.
