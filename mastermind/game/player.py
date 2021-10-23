@@ -1,10 +1,19 @@
 import random
 
 class Player:
-    """A person taking part in a game. 
+    """A person taking part in a game.
+
+    Attributes:
+        _name (string): An instance of the player name.
+        _guess (Guess): An instance of Guess.
+        _code (str): The players secret code to guess.
     """
     def __init__(self, name):
-        """The glue to the class
+        """The glue to the class.
+
+        Args:
+            self (Player): An instance of Player.
+            name (string): The players name.
         """
         self._name = name
         self._guess = None

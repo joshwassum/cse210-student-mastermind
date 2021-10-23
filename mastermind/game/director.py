@@ -98,6 +98,6 @@ class Director:
         if self._board.check_guess(self._roster.current):
             winner = self._roster.get_current()
             name = winner.get_name()
-            self._console.write(f"\n {name} won!")
+            self._console.write(f"\n{name} won!")
             self._keep_playing = False
         self._roster.next_player()

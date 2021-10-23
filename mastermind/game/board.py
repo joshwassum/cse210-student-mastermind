@@ -6,7 +6,8 @@ class Board():
     Stereotype: 
         Information Holder
     Attributes:
-        _piles (list): The number of piles of stones.
+        _hint (list): The current player hint.
+        _guess (list): the current player guess.
     """
 
     def __init__(self):
@@ -25,10 +26,10 @@ class Board():
         """Converts the board data to its string representation.
         Args:
            self (Board): an instance of Board.
+           player (Roster): and instance of Roster.
         Returns:
             string: A representation of the current board.
-        """ 
-
+        """
         board = ""
 
         border = "\n---------------------"
@@ -36,13 +37,9 @@ class Board():
         board += border
 
         for i in range(len(players.players)):
-            self._hint.append("****")
-            self._guess.append("----")
             name = players.players[i].get_name()
-            i+=1
 
-            board +=(f"\nPlayer name: {name} " + self._guess[players.current] + ", " + self._hint[players.current]) 
-         
+            board +=(f"\nPlayer name: {name} " + self._guess[i] + ", " + self._hint[i])
         board += border
         return board
 
@@ -52,41 +49,33 @@ class Board():
 
         Args:
         self (Board): An instance of Board.
-        current_player (Player): and instance of Player.
-        player_number (int): player postition.
+        current_player (Player): an instance of Player.
+        player_number (int): The players index position in the Roster.
 
         Returns:
         string: A hint in the form [xxxx]
         """
-        temp_guess = list(str(self._guess[player_number]))
         temp_code = list(str(current_player.get_code()))
         temp_hint = list(str(self._hint[player_number]))
         player_guess = list(str(current_player.get_guess().get_guess()))
 
-        print(temp_code)
-        print(temp_hint)
-        print(temp_guess)
-        print(player_guess)
+        for i in range(4):
+            if player_guess[i] == temp_code[i]:
+                temp_hint[i] = "x"
+            elif player_guess[i] in temp_code:
+                temp_hint[i] = "o"
+            else:
+                temp_hint[i] = "*"
+        self._hint[player_number] = "".join(temp_hint)
+        self._guess[player_number] = "".join(player_guess)
 
-        # code = current_player.get_code()
-        # for i in self._hint[player_number]:
-        #     temp_hint.append[i]
-        # for i in self._guess[player_number]:
-        #     temp_code.append[i]
-        # for i in code:
-        #     temp_code.append[i]
-        # for i in range(len(code)):
-        #     if temp_code[i] == temp_guess[i]:
-                
-
-        
 
     def check_guess(self, player):
         '''Checks the users letter guess a letter with a true or false then return
-        
-        
+
         Args:
             self (Board): an instance of Board.
+            player (Player): an instance of Player.
         '''
         if "o" in self._hint[player] or "*" in self._hint[player]:
             return False
@@ -96,8 +85,10 @@ class Board():
 
     def _prepare(self):
         """Sets up the board with an entry for each player.
-        
+
         Args:
             self (Board): an instance of Board.
         """
-        pass
+        for i in range(2):
+            self._hint.append("****")
+            self._guess.append("----")
